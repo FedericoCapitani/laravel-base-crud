@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Comics</h1>
-<a href="{{route('home')}}">home</a>
-
 <div class="container">
   <div class="heading d-flex justify-content-between align-items-center">
     <h1 class="p-5">comics</h1>
     <div>
       <a class="btn btn-primary d-block" href="{{route('comics.create')}}">Create comic</a>
+      <a href="{{route('home')}}">home</a>
     </div>
   </div>
 
