@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comic;
 use Illuminate\Database\Seeder;
 
 class ComicSeeder extends Seeder
@@ -129,7 +130,7 @@ class ComicSeeder extends Seeder
             $_comic->thumb = $comic['thumb'];
             $_comic->price = $comic['price'];
             $_comic->series = $comic['series'];
-            $_comic->sale_cate = $comic['sale_cate'];
+            $_comic->sale_date = $comic['sale_date'];
             $_comic->type = $comic['type'];
             $_comic->save();
         }
