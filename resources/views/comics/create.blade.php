@@ -18,6 +18,35 @@
         <small id="thumbHelper" class="text-muted">Put the comic thumbnail link here</small>
     </div>
     
+    <div class="mb-4">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price" class="form-control" placeholder="Comic price" aria-describeby="priceHelper">
+        <small id="priceHelper" class="text-muted">Type the comic price here</small>
+    </div>
+
+    <div class="form-group">
+        <label for="series">Series</label>
+        <input type="text" name="series" id="series" class="form-control" placeholder="Comic series" aria-describeby="seriesHelper">
+        <small id="seriesHelper" class="text-muted">Type the comic series here</small>
+    </div>
+
+    <div class="form-group">
+        <label for="sale_date">Sale date</label>
+        <input type="text" name="sale_date" id="sale_date" class="form-control" placeholder="Comic sale_date" aria-describeby="sale_dateHelper">
+        <small id="sale_dateHelper" class="text-muted">Type the comic sale date here</small>
+    </div>
+
+    <div class="form-group">
+        <label for="type">Series</label>
+        <input type="text" name="type" id="type" class="form-control" placeholder="Comic type" aria-describeby="typeHelper">
+        <small id="typeHelper" class="text-muted">Type the comic type here</small>
+    </div>
+
     <button type="submit" class="btn btn-primary">Add Comic</button>
   </form>
 </div>
