@@ -3,18 +3,31 @@
 @section('content')
 <div class="container">
   <h1> Create a new Game</h1>
+
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+  @endif
   <!-- Puntare il form alla rotta POST store -->
   <form action="{{route('comics.store')}}" method="post">
     @csrf
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" class="form-control" placeholder="Comic title" aria-describeby="titleHelper">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Comic title" aria-describeby="titleHelper">
         <small id="titleHelper" class="text-muted">Type the comic title here</small>
+        @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
 
     <div class="form-group">
         <label for="thumb">Thumbnail</label>
-        <input type="text" name="thumb" id="thumb" class="form-control" placeholder="Comic thumb" aria-describeby="thumbHelper">
+        <input type="text" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror" placeholder="Comic thumb" aria-describeby="thumbHelper">
         <small id="thumbHelper" class="text-muted">Put the comic thumbnail link here</small>
     </div>
     
@@ -25,7 +38,7 @@
 
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" name="price" id="price" class="form-control" placeholder="Comic price" aria-describeby="priceHelper">
+        <input type="number" step="0.01" name="price" id="price" class="form-control" placeholder="Comic price" aria-describeby="priceHelper">
         <small id="priceHelper" class="text-muted">Type the comic price here</small>
     </div>
 

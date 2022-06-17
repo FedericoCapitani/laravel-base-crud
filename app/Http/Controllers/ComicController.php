@@ -36,10 +36,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all(), $request->title);
+        // dd($request->all(), $request->title);
         
-        $data = $request->all();
-        Comic::create($data);
+        $validate_data = $request->validate([
+            'title' => 'required|max:120',
+            'description' => 'nullable',
+            'thumb' => 'required',
+            'price' => 'nullable',
+            'series' => 'nullable',
+            'sale_date' => 'nullable',
+            'type' => 'nullable'
+        ]);
+
+        //$data = $request->all();
+        Comic::create($validate_data);
 
         return redirect()->route('comics.index');
     }
