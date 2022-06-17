@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h1> Create a new Game</h1>
+  <h1> Edit {{$comic->title}}</h1>
 
   @if ($errors->any())
     <div class="alert alert-danger">
@@ -14,50 +14,52 @@
     </div>
   @endif
   <!-- Puntare il form alla rotta POST store -->
-  <form action="{{route('comics.store')}}" method="post">
+  <form action="{{route('comics.update', $comic->id)}}" method="post">
     @csrf
+    @method('PUT')
+    
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Comic title" aria-describeby="titleHelper">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Comic title" aria-describeby="titleHelper" value="{{$comic->title}}">
         <small id="titleHelper" class="text-muted">Type the comic title here</small>
     </div>
 
     <div class="form-group">
         <label for="thumb">Thumbnail</label>
-        <input type="text" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror" placeholder="Comic thumb" aria-describeby="thumbHelper">
+        <input type="text" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror" placeholder="Comic thumb" aria-describeby="thumbHelper" value="{{$comic->thumb}}">
         <small id="thumbHelper" class="text-muted">Put the comic thumbnail link here</small>
     </div>
     
     <div class="mb-4">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+        <textarea class="form-control" name="description" id="description" rows="5" value="{{$comic->description}}"></textarea>
     </div>
 
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" step="0.01" name="price" id="price" class="form-control" placeholder="Comic price" aria-describeby="priceHelper">
+        <input type="number" step="0.01" name="price" id="price" class="form-control" placeholder="Comic price" aria-describeby="priceHelper" value="{{$comic->price}}">
         <small id="priceHelper" class="text-muted">Type the comic price here</small>
     </div>
 
     <div class="form-group">
         <label for="series">Series</label>
-        <input type="text" name="series" id="series" class="form-control" placeholder="Comic series" aria-describeby="seriesHelper">
+        <input type="text" name="series" id="series" class="form-control" placeholder="Comic series" aria-describeby="seriesHelper" value="{{$comic->series}}">
         <small id="seriesHelper" class="text-muted">Type the comic series here</small>
     </div>
 
     <div class="form-group">
         <label for="sale_date">Sale date</label>
-        <input type="text" name="sale_date" id="sale_date" class="form-control" placeholder="Comic sale_date" aria-describeby="sale_dateHelper">
+        <input type="text" name="sale_date" id="sale_date" class="form-control" placeholder="Comic sale_date" aria-describeby="sale_dateHelper" value="{{$comic->sale_date}}">
         <small id="sale_dateHelper" class="text-muted">Type the comic sale date here</small>
     </div>
 
     <div class="form-group">
         <label for="type">Series</label>
-        <input type="text" name="type" id="type" class="form-control" placeholder="Comic type" aria-describeby="typeHelper">
+        <input type="text" name="type" id="type" class="form-control" placeholder="Comic type" aria-describeby="typeHelper" value="{{$comic->type}}">
         <small id="typeHelper" class="text-muted">Type the comic type here</small>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add Comic</button>
+    <button type="submit" class="btn btn-primary">Update</button>
   </form>
 </div>
 @endsection
